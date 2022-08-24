@@ -1,0 +1,33 @@
+name: Self_Hosted_Runner
+
+on:
+  #triggers
+  push:
+    branches: ["main"]
+  # to manually trigger the workflow 
+  workflow_dispatch:
+
+jobs:
+  #job name (demo_build)
+  demo_build:
+    # runs on self hosted runner that we have created
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a demo script
+        run: echo Hi, Hello!
+      - name: Run a mutli-line script
+        run: |
+          echo Hi
+          echo Hello!
+          
+  demo_build_2:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a demo script
+        run: echo Hi, Hello!
+      - name: Run a mutli-line script
+        run: |
+          echo Hi
+          echo Hello!
